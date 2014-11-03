@@ -45,10 +45,12 @@
 - (void)setupView {
     
     self.backgroundColor = [UIColor whiteColor];
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self.accessoryType = UITableViewCellAccessoryNone;
     self.accessoryView = nil;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    // Fix for contentView constraint warning
+    [self.contentView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    
     // Create our ImageView
     self.sampleImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.sampleImageView.translatesAutoresizingMaskIntoConstraints = NO;

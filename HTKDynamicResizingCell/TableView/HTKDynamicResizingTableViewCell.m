@@ -18,7 +18,7 @@
 + (CGSize)sizeForCellWithDefaultSize:(CGSize)defaultSize setupCellBlock:(setupCellBlock)block {
     
     // Check to see if we have a "sizing" cell to work with
-    __block id<HTKDynamicResizingCellProtocol> cell = nil;
+    __block UITableViewCell *cell = nil;
     [cellArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[[self class] class]]) {
             cell = obj;
@@ -28,12 +28,13 @@
     
     if (!cell) {
         // Create and add to our static array using default size passed
-        cell = [[[self class] alloc] initWithFrame:CGRectMake(0, 0, defaultSize.width, defaultSize.height)];
+        cell = [[[self class] alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HTKSizingCell"];
+        cell.frame = CGRectMake(0, 0, defaultSize.width, defaultSize.height);
         [cellArray addObject:cell];
     }
     
     // Get our cell configured in block
-    cell = block(cell);
+    cell = block((id<HTKDynamicResizingCellProtocol>)cell);
     
     // Determine size. If your constraints aren't setup correctly
     // this won't work. So make sure you:

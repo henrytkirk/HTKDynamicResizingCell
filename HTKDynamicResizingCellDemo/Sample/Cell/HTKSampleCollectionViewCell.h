@@ -13,7 +13,7 @@
 /**
  * Default cell size. This is required to properly size cells.
  */
-#define DEFAULT_CELL_SIZE (CGSize){[[UIScreen mainScreen] bounds].size.width, 80}
+#define DEFAULT_CELL_SIZE (CGSize){[[UIScreen mainScreen] bounds].size.width, 85}
 
 /**
  * Sample CollectionViewCell that implements the dynamic sizing protocol.
