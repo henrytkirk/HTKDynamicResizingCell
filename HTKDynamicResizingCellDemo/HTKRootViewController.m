@@ -22,6 +22,7 @@
 #import "HTKRootViewController.h"
 #import "HTKSampleCollectionViewController.h"
 #import "HTKSampleTableViewController.h"
+#import "HTKDynamicResizingCellDemo-Swift.h"
 
 // Cell Identifier
 static NSString *HTKRootCellIdentifier = @"HTKRootCellIdentifier";
@@ -39,7 +40,10 @@ static NSString *HTKRootCellIdentifier = @"HTKRootCellIdentifier";
     
     self.title = @"Menu";
     
-    self.dataArray = @[@"CollectionView Example", @"TableView Example"];
+    self.dataArray = @[@"CollectionView Example",
+                       @"TableView Example",
+                       @"Swift CollectionView Example",
+                       @"Swift TableView Example"];
     
     // Register class
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:HTKRootCellIdentifier];
@@ -71,12 +75,18 @@ static NSString *HTKRootCellIdentifier = @"HTKRootCellIdentifier";
         case 0: {
             viewController = (HTKSampleCollectionViewController *)[[HTKSampleCollectionViewController alloc] init];
             break;
-                              
         }
         case 1: {
             viewController = (HTKSampleTableViewController *)[[HTKSampleTableViewController alloc] init];
             break;
-            
+        }
+        case 2: {
+            viewController = [[SwiftSampleCollectionViewController alloc] init];
+            break;
+        }
+        case 3: {
+            viewController = [[SwiftSampleTableViewController alloc] init];
+            break;
         }
         default:
             break;
