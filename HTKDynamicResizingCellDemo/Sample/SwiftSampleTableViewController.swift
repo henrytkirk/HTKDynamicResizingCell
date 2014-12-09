@@ -10,19 +10,45 @@ import UIKit
 
 @objc class SwiftSampleTableViewController: UITableViewController {
 
+    var dataArray: [[NSObject: AnyObject]] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.title = "Swift Table View"
+
+        // Load sample data into the array
+        if let filePath = NSBundle.mainBundle().pathForResource("SampleData", ofType: "plist") {
+            if let data = NSArray(contentsOfFile: filePath) as? [[NSObject: AnyObject]] {
+                self.dataArray = data
+            }
+        }
+
+        // Register cell classes
+        self.tableView!.registerClass(HTKSampleTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(HTKSampleTableViewCell.self))
+        self.tableView!.estimatedRowHeight = 44
+        self.tableView!.rowHeight = UITableViewAutomaticDimension
     }
 
     // MARK: - UITableViewDataSource
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.dataArray.count
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(HTKSampleTableViewCell.self)) as HTKSampleTableViewCell
+
+        // Configure the cell
+        let dataDict = self.dataArray[indexPath.row]
+        let image = UIImage(named: "pic\(arc4random_uniform(10) + 1)")
+        cell.setupCellWithData(dataDict, andImage: image)
+
+        return cell
     }
 
 }
