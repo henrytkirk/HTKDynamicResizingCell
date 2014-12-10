@@ -107,7 +107,7 @@ static NSString *HTKSampleCollectionViewCellIdentifier = @"HTKSampleCollectionVi
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     __weak typeof(self) weakSelf = self;
-    CGSize defaultSize = DEFAULT_CELL_SIZE;
+    CGSize defaultSize = [HTKSampleCollectionViewCell defaultCellSize];
     
     // Create our size
     return [HTKSampleCollectionViewCell sizeForCellWithDefaultSize:defaultSize setupCellBlock:^id(id<HTKDynamicResizingCellProtocol> cellToSetup) {

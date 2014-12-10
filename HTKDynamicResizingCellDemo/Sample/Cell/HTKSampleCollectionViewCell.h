@@ -24,11 +24,6 @@
 #import "HTKDynamicResizingCellProtocol.h"
 
 /**
- * Default cell size. This is required to properly size cells.
- */
-#define DEFAULT_CELL_SIZE (CGSize){[[UIScreen mainScreen] bounds].size.width, 85}
-
-/**
  * Sample CollectionViewCell that implements the dynamic sizing protocol.
  */
 @interface HTKSampleCollectionViewCell : HTKDynamicResizingCollectionViewCell
@@ -37,5 +32,10 @@
  * Sets up the cell with data
  */
 - (void)setupCellWithData:(NSDictionary *)data andImage:(UIImage *)image;
+
+/**
+ * Default cell size. This is required to properly size cells.
+ */
++ (CGSize)defaultCellSize;
 
 @end

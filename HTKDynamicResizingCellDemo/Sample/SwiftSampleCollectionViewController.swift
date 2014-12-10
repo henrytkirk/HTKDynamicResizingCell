@@ -69,7 +69,7 @@ import UIKit
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let dataDict = self.dataArray[indexPath.row]
-        let defaultSize = CGSize(width: UIScreen.mainScreen().bounds.size.width, height: 85)
+        let defaultSize = HTKSampleCollectionViewCell.defaultCellSize()
 
         let cellSize = HTKSampleCollectionViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
             (cellToSetup as? HTKSampleCollectionViewCell)?.setupCellWithData(dataDict, andImage: nil)

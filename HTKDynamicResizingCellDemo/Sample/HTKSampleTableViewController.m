@@ -95,7 +95,7 @@ static NSString *HTKSampleTableViewCellIdentifier = @"HTKSampleTableViewCellIden
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     __weak typeof(self) weakSelf = self;
-    CGSize defaultSize = DEFAULT_CELL_SIZE;
+    CGSize defaultSize = [HTKSampleTableViewCell defaultCellSize];
     
     // Create our size
     CGSize cellSize = [HTKSampleTableViewCell sizeForCellWithDefaultSize:defaultSize setupCellBlock:^id(id<HTKDynamicResizingCellProtocol> cellToSetup) {
