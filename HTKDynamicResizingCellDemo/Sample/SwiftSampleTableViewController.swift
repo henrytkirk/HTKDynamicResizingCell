@@ -51,4 +51,18 @@ import UIKit
         return cell
     }
 
+    // MARK: - UITableViewDelegate
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let dataDict = self.dataArray[indexPath.row]
+        let defaultSize = CGSize(width: UIScreen.mainScreen().bounds.size.width, height: 85)
+
+        let cellSize = HTKSampleTableViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
+            (cellToSetup as? HTKSampleTableViewCell)?.setupCellWithData(dataDict, andImage: nil)
+            return cellToSetup
+        })
+
+        return cellSize.height
+    }
+
 }
