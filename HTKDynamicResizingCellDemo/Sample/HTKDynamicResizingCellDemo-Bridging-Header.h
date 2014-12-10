@@ -3,4 +3,5 @@
 //
 
 #import "HTKSampleTableViewCell.h"
+#import "HTKSampleCollectionViewCell.h"
 #import "HTKDynamicResizingCellProtocol.h"
