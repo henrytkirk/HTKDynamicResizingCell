@@ -12,12 +12,22 @@ let reuseIdentifier = "Cell"
 
 @objc class SwiftSampleCollectionViewController: UICollectionViewController {
 
+    override init() {
+        let layout = UICollectionViewFlowLayout()
+        super.init(collectionViewLayout: layout)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Swift Collection View"
 
         // Register cell classes
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.backgroundColor = UIColor.lightGrayColor()
     }
 
     // MARK: - UICollectionViewDataSource
