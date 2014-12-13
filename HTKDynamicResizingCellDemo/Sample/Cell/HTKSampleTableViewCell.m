@@ -137,7 +137,7 @@
     // the minimum size needed to fit all contents. So if you
     // do not have a max width it will not constrain the width
     // of the label when calculating height.
-    CGSize defaultSize = DEFAULT_CELL_SIZE;
+    CGSize defaultSize = [[self class] defaultCellSize];
     self.bioLabel.preferredMaxLayoutWidth = defaultSize.width - ([metricDict[@"sideBuffer"] floatValue] * 2);
 }
 
@@ -154,6 +154,10 @@
     self.bioLabel.text = bioString;
     
     self.sampleImageView.image = image;
+}
+
++ (CGSize)defaultCellSize {
+    return (CGSize){CGRectGetWidth([[UIScreen mainScreen] bounds]), 85};
 }
 
 @end

@@ -19,6 +19,8 @@
 		0E69B9151A054A4700942145 /* HTKSampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69B9081A054A4700942145 /* HTKSampleTableViewController.m */; };
 		0E69B91F1A054A8200942145 /* HTKDynamicResizingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69B9191A054A8200942145 /* HTKDynamicResizingCollectionViewCell.m */; };
 		0E69B9201A054A8200942145 /* HTKDynamicResizingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69B91E1A054A8200942145 /* HTKDynamicResizingTableViewCell.m */; };
+		B54CA4F71A30A2FB00930CE1 /* SwiftSampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CA4F61A30A2FB00930CE1 /* SwiftSampleTableViewController.swift */; };
+		B54CA4F91A30A3C900930CE1 /* SwiftSampleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CA4F81A30A3C900930CE1 /* SwiftSampleCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,9 @@
 		0E69B91D1A054A8200942145 /* HTKDynamicResizingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTKDynamicResizingTableViewCell.h; sourceTree = "<group>"; };
 		0E69B91E1A054A8200942145 /* HTKDynamicResizingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTKDynamicResizingTableViewCell.m; sourceTree = "<group>"; };
 		0EEF79CA1A03C4B80047807A /* HTKDynamicResizingCellDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTKDynamicResizingCellDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B54CA4F51A30A2FA00930CE1 /* HTKDynamicResizingCellDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HTKDynamicResizingCellDemo-Bridging-Header.h"; path = "Sample/HTKDynamicResizingCellDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		B54CA4F61A30A2FB00930CE1 /* SwiftSampleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSampleTableViewController.swift; sourceTree = "<group>"; };
+		B54CA4F81A30A3C900930CE1 /* SwiftSampleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSampleCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 				0E69B8FD1A054A4700942145 /* Sample */,
 				0E69B8EE1A054A4700942145 /* AppDelegate.h */,
 				0E69B8EF1A054A4700942145 /* AppDelegate.m */,
+				B54CA4F51A30A2FA00930CE1 /* HTKDynamicResizingCellDemo-Bridging-Header.h */,
 				0E69B8F01A054A4700942145 /* LaunchScreen.xib */,
 				0E69B8F81A054A4700942145 /* HTKRootViewController.h */,
 				0E69B8F91A054A4700942145 /* HTKRootViewController.m */,
@@ -84,6 +90,8 @@
 				0E69B9061A054A4700942145 /* HTKSampleCollectionViewController.m */,
 				0E69B9071A054A4700942145 /* HTKSampleTableViewController.h */,
 				0E69B9081A054A4700942145 /* HTKSampleTableViewController.m */,
+				B54CA4F81A30A3C900930CE1 /* SwiftSampleCollectionViewController.swift */,
+				B54CA4F61A30A2FB00930CE1 /* SwiftSampleTableViewController.swift */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -231,6 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E69B90D1A054A4700942145 /* HTKRootViewController.m in Sources */,
+				B54CA4F91A30A3C900930CE1 /* SwiftSampleCollectionViewController.swift in Sources */,
+				B54CA4F71A30A2FB00930CE1 /* SwiftSampleTableViewController.swift in Sources */,
 				0E69B9151A054A4700942145 /* HTKSampleTableViewController.m in Sources */,
 				0E69B91F1A054A8200942145 /* HTKDynamicResizingCollectionViewCell.m in Sources */,
 				0E69B9121A054A4700942145 /* HTKSampleTableViewCell.m in Sources */,
@@ -275,6 +285,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -317,6 +328,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -339,10 +351,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HTKDynamicResizingCellDemo;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sample/HTKDynamicResizingCellDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -351,10 +366,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HTKDynamicResizingCellDemo;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sample/HTKDynamicResizingCellDemo-Bridging-Header.h";
 			};
 			name = Release;
 		};
