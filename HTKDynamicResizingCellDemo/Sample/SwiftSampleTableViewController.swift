@@ -25,7 +25,7 @@ import UIKit
         }
 
         // Register cell classes
-        self.tableView!.registerClass(HTKSampleTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(HTKSampleTableViewCell.self))
+        self.tableView!.registerClass(SwiftSampleTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(SwiftSampleTableViewCell.self))
         self.tableView!.estimatedRowHeight = 44
         self.tableView!.rowHeight = UITableViewAutomaticDimension
     }
@@ -41,12 +41,12 @@ import UIKit
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(HTKSampleTableViewCell.self)) as HTKSampleTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(SwiftSampleTableViewCell.self)) as SwiftSampleTableViewCell
 
         // Configure the cell
         let dataDict = self.dataArray[indexPath.row]
         let image = UIImage(named: "pic\(arc4random_uniform(10) + 1)")
-        cell.setupCellWithData(dataDict, andImage: image)
+        cell.setupCellWithData(dataDict, image: image)
 
         return cell
     }
@@ -55,10 +55,10 @@ import UIKit
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let dataDict = self.dataArray[indexPath.row]
-        let defaultSize = HTKSampleTableViewCell.defaultCellSize()
+        let defaultSize = SwiftSampleTableViewCell.defaultCellSize
 
-        let cellSize = HTKSampleTableViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
-            (cellToSetup as? HTKSampleTableViewCell)?.setupCellWithData(dataDict, andImage: nil)
+        let cellSize = SwiftSampleTableViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
+            (cellToSetup as? SwiftSampleTableViewCell)?.setupCellWithData(dataDict, image: nil)
             return cellToSetup
         })
 
