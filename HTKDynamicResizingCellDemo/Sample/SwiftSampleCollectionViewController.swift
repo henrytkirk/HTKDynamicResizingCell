@@ -40,7 +40,7 @@ import UIKit
         self.collectionView!.collectionViewLayout = layout
 
         // Register cell classes
-        self.collectionView!.registerClass(HTKSampleCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(HTKSampleCollectionViewCell.self))
+        self.collectionView!.registerClass(SwiftSampleCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(SwiftSampleCollectionViewCell.self))
         self.collectionView!.backgroundColor = UIColor.lightGrayColor()
     }
 
@@ -55,12 +55,12 @@ import UIKit
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(HTKSampleCollectionViewCell.self), forIndexPath: indexPath) as HTKSampleCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(SwiftSampleCollectionViewCell.self), forIndexPath: indexPath) as SwiftSampleCollectionViewCell
 
         // Configure the cell
         let dataDict = self.dataArray[indexPath.row]
         let image = UIImage(named: "pic\(arc4random_uniform(10) + 1)")
-        cell.setupCellWithData(dataDict, andImage: image)
+        cell.setupCellWithData(dataDict, image: image)
 
         return cell
     }
@@ -69,10 +69,10 @@ import UIKit
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let dataDict = self.dataArray[indexPath.row]
-        let defaultSize = HTKSampleCollectionViewCell.defaultCellSize()
+        let defaultSize = SwiftSampleCollectionViewCell.defaultCellSize
 
-        let cellSize = HTKSampleCollectionViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
-            (cellToSetup as? HTKSampleCollectionViewCell)?.setupCellWithData(dataDict, andImage: nil)
+        let cellSize = SwiftSampleCollectionViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
+            (cellToSetup as? SwiftSampleCollectionViewCell)?.setupCellWithData(dataDict, image: nil)
             return cellToSetup
         })
 
