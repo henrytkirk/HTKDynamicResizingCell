@@ -11,6 +11,7 @@ import UIKit
 @objc class SwiftSampleCollectionViewController: UICollectionViewController {
 
     var dataArray: [[NSObject: AnyObject]] = []
+    var sizeCache = NSCache()
 
     override init() {
         let layout = UICollectionViewFlowLayout()
@@ -68,13 +69,20 @@ import UIKit
     // MARK: - UICollectionViewDelegateFlowLayout
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let dataDict = self.dataArray[indexPath.row]
-        let defaultSize = SwiftSampleCollectionViewCell.defaultCellSize
+        var cellSize: CGSize
 
-        let cellSize = SwiftSampleCollectionViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
-            (cellToSetup as? SwiftSampleCollectionViewCell)?.setupCellWithData(dataDict, image: nil)
-            return cellToSetup
-        })
+        if let value: AnyObject = self.sizeCache.objectForKey("\(indexPath)") {
+            cellSize = value.CGSizeValue()
+        } else {
+            let dataDict = self.dataArray[indexPath.row]
+            let defaultSize = SwiftSampleCollectionViewCell.defaultCellSize
+
+            cellSize = SwiftSampleCollectionViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
+                (cellToSetup as? SwiftSampleCollectionViewCell)?.setupCellWithData(dataDict, image: nil)
+                return cellToSetup
+            })
+            self.sizeCache.setObject(NSValue(CGSize: cellSize), forKey: "\(indexPath)")
+        }
 
         return cellSize
     }

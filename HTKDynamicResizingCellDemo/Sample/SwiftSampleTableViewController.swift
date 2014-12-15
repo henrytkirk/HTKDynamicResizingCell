@@ -11,6 +11,7 @@ import UIKit
 @objc class SwiftSampleTableViewController: UITableViewController {
 
     var dataArray: [[NSObject: AnyObject]] = []
+    var sizeCache = NSCache()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +55,20 @@ import UIKit
     // MARK: - UITableViewDelegate
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let dataDict = self.dataArray[indexPath.row]
-        let defaultSize = SwiftSampleTableViewCell.defaultCellSize
+        var cellSize: CGSize
 
-        let cellSize = SwiftSampleTableViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
-            (cellToSetup as? SwiftSampleTableViewCell)?.setupCellWithData(dataDict, image: nil)
-            return cellToSetup
-        })
+        if let value: AnyObject = self.sizeCache.objectForKey("\(indexPath)") {
+            cellSize = value.CGSizeValue()
+        } else {
+            let dataDict = self.dataArray[indexPath.row]
+            let defaultSize = SwiftSampleTableViewCell.defaultCellSize
+
+            cellSize = SwiftSampleTableViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
+                (cellToSetup as? SwiftSampleTableViewCell)?.setupCellWithData(dataDict, image: nil)
+                return cellToSetup
+            })
+            self.sizeCache.setObject(NSValue(CGSize: cellSize), forKey: "\(indexPath)")
+        }
 
         return cellSize.height
     }
