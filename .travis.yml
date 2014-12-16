@@ -1,3 +1,5 @@
 language: objective-c
+before_install:
+  - gem install xcpretty --no-rdoc --no-ri
 script:
-  - xctool -project HTKDynamicResizingCellDemo/HTKDynamicResizingCellDemo.xcodeproj -scheme HTKDynamicResizingCellDemo -sdk iphonesimulator clean build
+  - xcodebuild -project HTKDynamicResizingCellDemo/HTKDynamicResizingCellDemo.xcodeproj -scheme HTKDynamicResizingCellDemo -sdk iphonesimulator clean build | xcpretty -c ; exit ${PIPESTATUS[0]}
