@@ -1,0 +1,3 @@
+language: objective-c
+script:
+  - xctool -project HTKDynamicResizingCellDemo/HTKDynamicResizingCellDemo.xcodeproj -scheme HTKDynamicResizingCellDemo -sdk iphonesimulator clean build
