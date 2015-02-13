@@ -57,7 +57,7 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setUpSubviews()
+        setUpSubviews()
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -67,23 +67,23 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
     // MARK: - Private Methods
 
     func setUpSubviews() {
-        self.backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.whiteColor()
 
-        self.sampleImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.nameLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.companyLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.bioLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.contentView.autoresizingMask = .FlexibleHeight
-        self.contentView.addSubview(self.sampleImageView)
-        self.contentView.addSubview(self.nameLabel)
-        self.contentView.addSubview(self.companyLabel)
-        self.contentView.addSubview(self.bioLabel)
+        sampleImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        nameLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        companyLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        bioLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        contentView.autoresizingMask = .FlexibleHeight
+        contentView.addSubview(sampleImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(companyLabel)
+        contentView.addSubview(bioLabel)
 
         let views: [NSObject: AnyObject] = [
-            "image": self.sampleImageView,
-            "name": self.nameLabel,
-            "company": self.companyLabel,
-            "bio": self.bioLabel
+            "image": sampleImageView,
+            "name": nameLabel,
+            "company": companyLabel,
+            "bio": bioLabel
         ]
         let metrics: [NSObject: AnyObject] = [
             "padding": 10,
@@ -91,7 +91,7 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
         ]
 
         // Horizontal constraints
-        self.contentView.addConstraints(
+        contentView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|-padding-[image(imageSize)]-padding-[name]-padding-|",
                 options: nil,
@@ -99,7 +99,7 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
                 views: views
             )
         )
-        self.contentView.addConstraints(
+        contentView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|-padding-[image(imageSize)]-padding-[company]-padding-|",
                 options: nil,
@@ -107,7 +107,7 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
                 views: views
             )
         )
-        self.contentView.addConstraints(
+        contentView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|-padding-[bio]-padding-|",
                 options: nil,
@@ -117,7 +117,7 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
         )
 
         // Vertical constraints
-        self.contentView.addConstraints(
+        contentView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "V:|-padding-[image(imageSize)]",
                 options: nil,
@@ -125,7 +125,7 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
                 views: views
             )
         )
-        self.contentView.addConstraints(
+        contentView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "V:|-padding-[name]-padding-[company]",
                 options: nil,
@@ -133,7 +133,7 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
                 views: views
             )
         )
-        self.contentView.addConstraints(
+        contentView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "V:[bio]-padding-|",
                 options: nil,
@@ -141,23 +141,23 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
                 views: views
             )
         )
-        self.contentView.addConstraint(
+        contentView.addConstraint(
             NSLayoutConstraint(
-                item: self.companyLabel,
+                item: companyLabel,
                 attribute: .Bottom,
                 relatedBy: .Equal,
-                toItem: self.sampleImageView,
+                toItem: sampleImageView,
                 attribute: .Bottom,
                 multiplier: 1,
                 constant: 0
             )
         )
-        self.contentView.addConstraint(
+        contentView.addConstraint(
             NSLayoutConstraint(
-                item: self.bioLabel,
+                item: bioLabel,
                 attribute: .Top,
                 relatedBy: .Equal,
-                toItem: self.sampleImageView,
+                toItem: sampleImageView,
                 attribute: .Bottom,
                 multiplier: 1,
                 constant: 5
@@ -169,24 +169,24 @@ class SwiftSampleCollectionViewCell: HTKDynamicResizingCollectionViewCell {
         let UILayoutPriorityDefaultLow : UILayoutPriority = 250.0
 
         // Set hugging/compression priorites for all labels
-        self.nameLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
-        self.nameLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
-        self.companyLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
-        self.companyLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
-        self.bioLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
-        self.bioLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
+        nameLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
+        nameLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
+        companyLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
+        companyLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
+        bioLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
+        bioLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
 
         let defaultSize = self.dynamicType.defaultCellSize
-        self.bioLabel.preferredMaxLayoutWidth = defaultSize.width - (metrics["padding"] as CGFloat) * 2
+        bioLabel.preferredMaxLayoutWidth = defaultSize.width - (metrics["padding"] as CGFloat) * 2
     }
 
     // MARK: - Public Methods
 
     func setupCellWithData(data: [NSObject: AnyObject], image: UIImage?) {
-        self.nameLabel.text = data["sampleName"] as? String
-        self.companyLabel.text = data["sampleCompany"] as? String
-        self.bioLabel.text = data["sampleBio"] as? String
-        self.sampleImageView.image = image
+        nameLabel.text = data["sampleName"] as? String
+        companyLabel.text = data["sampleCompany"] as? String
+        bioLabel.text = data["sampleBio"] as? String
+        sampleImageView.image = image
     }
 
 }
