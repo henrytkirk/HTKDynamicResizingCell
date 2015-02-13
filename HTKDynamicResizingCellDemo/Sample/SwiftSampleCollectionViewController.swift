@@ -24,12 +24,12 @@ import UIKit
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Swift Collection View"
+        title = "Swift Collection View"
 
         // Load sample data into the array
         if let filePath = NSBundle.mainBundle().pathForResource("SampleData", ofType: "plist") {
             if let data = NSArray(contentsOfFile: filePath) as? [[NSObject: AnyObject]] {
-                self.dataArray = data
+                dataArray = data
             }
         }
 
@@ -38,11 +38,11 @@ import UIKit
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 1
         layout.sectionInset = UIEdgeInsetsZero
-        self.collectionView!.collectionViewLayout = layout
+        collectionView!.collectionViewLayout = layout
 
         // Register cell classes
-        self.collectionView!.registerClass(SwiftSampleCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(SwiftSampleCollectionViewCell.self))
-        self.collectionView!.backgroundColor = UIColor.lightGrayColor()
+        collectionView!.registerClass(SwiftSampleCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(SwiftSampleCollectionViewCell.self))
+        collectionView!.backgroundColor = UIColor.lightGrayColor()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -52,14 +52,14 @@ import UIKit
     }
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.dataArray.count
+        return dataArray.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(SwiftSampleCollectionViewCell.self), forIndexPath: indexPath) as SwiftSampleCollectionViewCell
 
         // Configure the cell
-        let dataDict = self.dataArray[indexPath.row]
+        let dataDict = dataArray[indexPath.row]
         let image = UIImage(named: "pic\(arc4random_uniform(10) + 1)")
         cell.setupCellWithData(dataDict, image: image)
 
@@ -71,17 +71,17 @@ import UIKit
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         var cellSize: CGSize
 
-        if let value: AnyObject = self.sizeCache.objectForKey("\(indexPath)") {
+        if let value: AnyObject = sizeCache.objectForKey("\(indexPath)") {
             cellSize = value.CGSizeValue()
         } else {
-            let dataDict = self.dataArray[indexPath.row]
+            let dataDict = dataArray[indexPath.row]
             let defaultSize = SwiftSampleCollectionViewCell.defaultCellSize
 
             cellSize = SwiftSampleCollectionViewCell.sizeForCellWithDefaultSize(defaultSize, setupCellBlock: { (cellToSetup: HTKDynamicResizingCellProtocol!) -> AnyObject! in
                 (cellToSetup as? SwiftSampleCollectionViewCell)?.setupCellWithData(dataDict, image: nil)
                 return cellToSetup
             })
-            self.sizeCache.setObject(NSValue(CGSize: cellSize), forKey: "\(indexPath)")
+            sizeCache.setObject(NSValue(CGSize: cellSize), forKey: "\(indexPath)")
         }
 
         return cellSize
