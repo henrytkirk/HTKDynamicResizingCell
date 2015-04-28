@@ -8,7 +8,7 @@ Subclassed UITableView/UICollectionView cells that will auto calculate their siz
 
 [CocoaPods](http://cocoapods.org) is the recommended way to add HTKScrollingNavigationController to your project.
 
-1. Add a pod entry for HTKScrollingNavigationController to your Podfile `pod 'HTKDynamicResizingCell', '~> 0.0.1'`
+1. Add a pod entry for HTKScrollingNavigationController to your Podfile `pod 'HTKDynamicResizingCell'`
 2. Install the pod(s) by running `pod install`.
 3. Subclass `HTKDynamicResizingTableViewCell` or `HTKDynamicResizingCollectionViewCell` where you wish to use it.
 4. Make sure Auto-layout is setup correctly. See comments in classes for help.
@@ -31,5 +31,6 @@ For AutoLayout to be correct, make sure you complete the following:
 
 ## Change log:
 v0.0.1: Initial project commit
+v0.0.2: Bug fixes
 
 Questions? Email: henrytkirk@gmail.com or Web: http://www.henrytkirk.info
