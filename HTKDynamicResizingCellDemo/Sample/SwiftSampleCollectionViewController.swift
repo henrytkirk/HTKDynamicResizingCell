@@ -12,7 +12,7 @@ import UIKit
 
     var dataArray: [[NSObject: AnyObject]] = []
 
-    override init() {
+    init() {
         let layout = UICollectionViewFlowLayout()
         super.init(collectionViewLayout: layout)
     }
@@ -55,7 +55,7 @@ import UIKit
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(HTKSampleCollectionViewCell.self), forIndexPath: indexPath) as HTKSampleCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(HTKSampleCollectionViewCell.self), forIndexPath: indexPath) as! HTKSampleCollectionViewCell
 
         // Configure the cell
         let dataDict = self.dataArray[indexPath.row]

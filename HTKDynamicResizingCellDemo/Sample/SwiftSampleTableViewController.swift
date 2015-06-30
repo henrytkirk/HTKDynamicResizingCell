@@ -41,7 +41,7 @@ import UIKit
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(HTKSampleTableViewCell.self)) as HTKSampleTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(HTKSampleTableViewCell.self)) as! HTKSampleTableViewCell
 
         // Configure the cell
         let dataDict = self.dataArray[indexPath.row]
