@@ -37,11 +37,11 @@ import UIKit
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 1
         layout.sectionInset = UIEdgeInsetsZero
-        self.collectionView!.collectionViewLayout = layout
+        self.collectionView.collectionViewLayout = layout
 
         // Register cell classes
-        self.collectionView!.registerClass(HTKSampleCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(HTKSampleCollectionViewCell.self))
-        self.collectionView!.backgroundColor = UIColor.lightGrayColor()
+        self.collectionView.registerClass(HTKSampleCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(HTKSampleCollectionViewCell.self))
+        self.collectionView.backgroundColor = UIColor.lightGrayColor()
     }
 
     // MARK: - UICollectionViewDataSource
