@@ -4,7 +4,7 @@ HTKDynamicResizingCell
 Subclassed UITableView/UICollectionView cells that will auto calculate their size so long as AutoLayout constraints are applied correctly. For iOS 7+. Works similar to how iOS 8's auto sizing of cells work.
 
 ## Adding to your project:
-### Cocoapods
+### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is the recommended way to add HTKScrollingNavigationController to your project.
 
